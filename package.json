@@ -1,7 +1,7 @@
 {
-  "name": "core-app",
+  "name": "repo-name",
   "version": "1.0.0",
-  "description": "Clean core for faster webapp production",
+  "description": "",
   "main": "./app/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pszyrek/core-app.git"
+    "url": "git+https://github.com/pszyrek/repo-name.git"
   },
   "author": "Piotr \"pszyrek\" Bujna",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pszyrek/core-app/issues"
+    "url": "https://github.com/pszyrek/repo-name/issues"
   },
-  "homepage": "https://github.com/pszyrek/core-app#readme",
+  "homepage": "https://github.com/pszyrek/repo-name#readme",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
