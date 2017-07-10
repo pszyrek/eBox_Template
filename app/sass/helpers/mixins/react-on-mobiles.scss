@@ -1,0 +1,19 @@
+@mixin react-on-mobiles($media) {
+  @if $media == 's' {
+    @media (min-width: $break-small) and (max-width: $break-medium - 1px) {
+      @content;
+    }
+  } @else if $media == 'm' {
+    @media (min-width: $break-medium) and (max-width: $break-large - 1px) {
+      @content;
+    }
+  } @else if $media == 'l' {
+    @media (min-width: $break-large) and (max-width: $break-extra - 1px ) {
+      @content;
+    }
+  } @else if $media == 'x' {
+    @media (min-width: $break-extra) {
+      @content;
+    }
+  }
+}
