@@ -1,5 +1,5 @@
 {
-  "name": "repo-name",
+  "name": "eBox_Template",
   "version": "1.0.0",
   "description": "",
   "main": "./app/main.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pszyrek/repo-name.git"
+    "url": "git+https://github.com/pszyrek/eBox_Template.git"
   },
   "author": "Piotr \"pszyrek\" Bujna",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pszyrek/repo-name/issues"
+    "url": "https://github.com/pszyrek/eBox_Template/issues"
   },
-  "homepage": "https://github.com/pszyrek/repo-name#readme",
+  "homepage": "https://github.com/pszyrek/eBox_Template#readme",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
