@@ -1,6 +1,9 @@
+@import './helpers/reset';
 @import './layout/grid';
+@import './layout/header';
+@import './layout/container';
 
-body {
-    margin: 0px;
-    padding: 0px;
+html {
+    background: #EEE;
+    font-family: 'Roboto', sans-serif;
 }

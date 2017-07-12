@@ -1,30 +1,77 @@
-@import '../settings';
-@import '../helpers/mixins/width-basic';
-@import '../helpers/mixins/react-on-mobiles';
+@import './helpers/variables';
 
-@for $col from 1 through $columns {
-
-  // without margin
-  .w-#{$col} {
-    @include width-basic;
-    width: ((100 / $columns) * $col) * 1%;
-  }
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    padding: .5rem;
 }
 
-@each $size, $size-value in $base-sizes {
-  @for $col from 1 through $columns {
-    @include react-on-mobiles($size) {
-       .w-#{$col}-#{$size} {
-        @include width-basic;
-        width: calc(calc(100% / #{$columns} * #{$col}) + 1%);
-      }
+.box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+}
+
+@for $i from 1 through $columns {
+    .col-xs-#{$i} {
+        flex: 0 0 auto;
+        flex-basis: (100% / $columns) * $i;
+        max-width: (100% / $columns) * $i;
     }
 
-    // hide on viewport
-    .hide-#{$size} {
-      @include react-on-mobiles($size) {
-        display: none;
-      }
+    .col-xs-offset-#{$i} {
+        flex: 0 0 auto;
+        margin-left: (100% / $columns) * $i;
     }
-  }
+}
+
+@media only screen and (min-width: 768px){
+
+    @for $i from 1 through $columns {
+        .col-sm-#{$i} {
+            flex: 0 0 auto;
+            flex-basis: (100% / $columns) * $i;
+            max-width: (100% / $columns) * $i;
+        }
+
+        .col-sm-offset-#{$i} {
+            flex: 0 0 auto;
+            margin-left: (100% / $columns) * $i;
+        }
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    @for $i from 1 through $columns {
+        .col-md-#{$i} {
+            flex: 0 0 auto;
+            flex-basis: (100% / $columns) * $i;
+            max-width: (100% / $columns) * $i;
+        }
+
+        .col-md-offset-#{$i} {
+            flex: 0 0 auto;
+            margin-left: (100% / $columns) * $i;
+        }
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+
+    @for $i from 1 through $columns {
+        .col-lg-#{$i} {
+            flex: 0 0 auto;
+            flex-basis: (100% / $columns) * $i;
+            max-width: (100% / $columns) * $i;
+        }
+
+        .col-lg-offset-#{$i} {
+            flex: 0 0 auto;
+            margin-left: (100% / $columns) * $i;
+        }
+    }
 }

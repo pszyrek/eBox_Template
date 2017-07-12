@@ -9,7 +9,7 @@ var extractPlugin = new ExtractTextPlugin({
 module.exports = {
     entry: './app/main.js',
     output: {
-        path: path.resolve(__dirname, '/app/dist'),
+        path: path.resolve('./app/dist'),
         filename: 'bundle.js',
         publicPath: ''
     },
@@ -21,7 +21,8 @@ module.exports = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['es2015']
+                            presets: ['es2015'],
+                            compact: false
                         }
                     }
                 ]
@@ -29,7 +30,7 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: extractPlugin.extract({
-                    use: ['css-loader', 'sass-loader']
+                    use: ['css-loader', 'postcss-loader', 'sass-loader']
                 })
             }
         ]

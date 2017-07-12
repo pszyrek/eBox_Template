@@ -1,0 +1,30 @@
+@import '../settings';
+@import '../helpers/mixins/width-basic';
+@import '../helpers/mixins/react-on-mobiles';
+
+@for $col from 1 through $columns {
+
+  // without margin
+  .w-#{$col} {
+    @include width-basic;
+    width: ((100 / $columns) * $col) * 1%;
+  }
+}
+
+@each $size, $size-value in $base-sizes {
+  @for $col from 1 through $columns {
+    @include react-on-mobiles($size) {
+       .w-#{$col}-#{$size} {
+        @include width-basic;
+        width: calc(calc(100% / #{$columns} * #{$col}) + 1%);
+      }
+    }
+
+    // hide on viewport
+    .hide-#{$size} {
+      @include react-on-mobiles($size) {
+        display: none;
+      }
+    }
+  }
+}
