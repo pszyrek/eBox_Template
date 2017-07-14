@@ -1,15 +1,30 @@
 .container {
-    width: 95%;
+    width: 60%;
     margin: 2rem auto 0 auto;
 
     .background-img {
         display: flex;
         justify-content: center;
+        background: url('~images/background.jpg');
+        background-position: center center;
+		background-repeat:  no-repeat;
+		background-size:  cover;
+        padding-top: 49.4%;
+        border-radius: .5rem;
         width: 100%;
+    }
+}
 
-        img {
-            border-radius: .5rem;
-            width: 100%;
-        }
+@include responsive($default, $sm-size) {
+
+    .container {
+        margin: .5rem auto 0 auto;
+        width: auto;
+    }
+}
+
+@include responsive($sm-size, $md-size) {
+    .container {
+        width: 90%;
     }
 }

@@ -1,9 +1,42 @@
 @import './helpers/reset';
 @import './layout/grid';
+@import './helpers/mixins/responsive';
 @import './layout/header';
 @import './layout/container';
+@import './layout/gallery';
 
 html {
     background: #EEE;
     font-family: 'Roboto', sans-serif;
+}
+
+.section-name {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 2rem 0;
+    
+    span {
+        color: #FF7200;
+        font-weight: 900;
+        font-size: 3rem;
+    }
+}
+
+@include responsive($default, $sm-size) {
+    .section-name {
+        margin: 1rem 0 1rem 0;
+
+        span {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@include responsive($sm-size, $md-size) {
+    .section-name {
+        
+        span {
+            font-size: 2.1rem;   
+        }
+    }
 }

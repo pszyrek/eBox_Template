@@ -1,49 +1,65 @@
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-
-var extractPlugin = new ExtractTextPlugin({
-    filename: 'main.css'
-})
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const ETP = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: './app/main.js',
+    devtool: 'cheap-module-source-map',
+    context: path.join(__dirname, 'app'),
+    entry: {
+        app: './main'
+    },
     output: {
-        path: path.resolve('./app/dist'),
-        filename: 'bundle.js',
-        publicPath: ''
+        path: path.join(__dirname, 'app', 'dist'),
+        filename: '[name].bundle.js'
     },
     module: {
-        rules: [
+        loaders: [
             {
                 test: /\.js$/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['es2015'],
-                            compact: false
-                        }
-                    }
-                ]
+                loader: "babel-loader",
+                include: path.join(__dirname, 'app')
             },
             {
-                test: /\.scss$/,
-                use: extractPlugin.extract({
-                    use: ['css-loader', 'postcss-loader', 'sass-loader']
-                })
+                test: /\.(css|scss|sass)$/,
+                loader: ETP.extract({
+                    fallback: 'style-loader',
+                    use: 'css-loader!postcss-loader!sass-loader'
+                }),
+                include: path.join(__dirname, 'app')
+            },
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'file-loader',
+                include: path.join(__dirname, 'app')
             }
         ]
     },
+    devServer: {
+        contentBase: path.join(__dirname, 'app', 'dist'),
+        inline: true,
+        stats: {
+            colors: true,
+            reasons: true,
+            chunks: false
+        }
+    },
+    resolve: {
+        alias: {
+            'images': path.resolve(__dirname, 'app', 'assets')
+        }
+    },
     plugins: [
-        extractPlugin,
         new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'app', 'index.html'),
+            inject: 'body',
             hash: true,
-            filename: 'index.html',
-            template: './app/index.html',
-            inject: 'body'
-        })
+            chunks: ['app'],
+            filename: 'index.html'
+        }),
+
+        new webpack.HotModuleReplacementPlugin(),
+
+        new ETP('main.css')
     ]
 };
-
-
